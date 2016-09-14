@@ -51,28 +51,28 @@ class AlexUITableTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return restaurants.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("RootTableCell", forIndexPath: indexPath) as! AlexTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RootTableCell", for: indexPath) as! AlexTableViewCell
 
-		cell.restaurant = restaurants[indexPath.row]
+		cell.restaurant = restaurants[(indexPath as NSIndexPath).row]
 		cell.fill()
 		
-		renewSelectedCell(cell, row: indexPath.row)
+		renewSelectedCell(cell, row: (indexPath as NSIndexPath).row)
 		
         return cell
     }
 	
-	func renewSelectedCell(currentCell:AlexTableViewCell?, row:Int?) -> Void
+	func renewSelectedCell(_ currentCell:AlexTableViewCell?, row:Int?) -> Void
 	{
 		var cell:AlexTableViewCell
 		var index:Int
@@ -85,47 +85,47 @@ class AlexUITableTableViewController: UITableViewController {
 		else
 		{
 			let currentIndexPath = tableView.indexPathForSelectedRow!
-			cell = tableView.cellForRowAtIndexPath(currentIndexPath) as! AlexTableViewCell
-			index = currentIndexPath.row
+			cell = tableView.cellForRow(at: currentIndexPath) as! AlexTableViewCell
+			index = (currentIndexPath as NSIndexPath).row
 		}
 		
 		if restaurants[index].IsVisited
 		{
-			cell.accessoryType = .Checkmark
+			cell.accessoryType = .checkmark
 		}
 		else
 		{
-			cell.accessoryType = .None
+			cell.accessoryType = .none
 		}
 	}
 
     // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
 
     // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
             // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
 
     // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to toIndexPath: IndexPath) {
 		
-		let MovingRest = restaurants[fromIndexPath.row]
-		restaurants.removeAtIndex(fromIndexPath.row)
-		restaurants.insert(MovingRest, atIndex: toIndexPath.row)
+		let MovingRest = restaurants[(fromIndexPath as NSIndexPath).row]
+		restaurants.remove(at: (fromIndexPath as NSIndexPath).row)
+		restaurants.insert(MovingRest, at: (toIndexPath as NSIndexPath).row)
 
     }
 
      // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
     }

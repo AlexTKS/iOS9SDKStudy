@@ -10,7 +10,7 @@ import Foundation
 
 class Restaurant {
     var Name = ""
-    var Type = ""
+    var `Type` = ""
     var Location = ""
     var Image = ""
     var IsVisited = false

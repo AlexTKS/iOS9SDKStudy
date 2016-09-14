@@ -15,7 +15,7 @@ class AlexTableViewCell: UITableViewCell {
     @IBOutlet weak var RestImage: UIImageView!
     @IBOutlet weak var Name: UILabel!
     @IBOutlet weak var Location: UILabel!
-    @IBOutlet weak var Type: UILabel!
+    @IBOutlet weak var `Type`: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,7 +30,7 @@ class AlexTableViewCell: UITableViewCell {
         self.RestImage.image = UIImage.init(named: restaurant.Image)
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
