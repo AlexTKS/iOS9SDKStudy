@@ -14,6 +14,7 @@
 		FA00A25D1D71EFCB0091014E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA00A25B1D71EFCB0091014E /* LaunchScreen.storyboard */; };
 		FA2418BD1D8B13B300202856 /* AlexDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2418BC1D8B13B300202856 /* AlexDetailCell.swift */; };
 		FA2418BF1D8B1D8100202856 /* AlexDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2418BE1D8B1D8100202856 /* AlexDetailViewController.swift */; };
+		FA4AB8BD1D8B30B10022D3FC /* AlexRateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4AB8BC1D8B30B10022D3FC /* AlexRateController.swift */; };
 		FA75B4F91D85E11A008E71C8 /* AlexUITableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA75B4F81D85E11A008E71C8 /* AlexUITableTableViewController.swift */; };
 		FA75B4FB1D85E14D008E71C8 /* classRestaurants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA75B4FA1D85E14D008E71C8 /* classRestaurants.swift */; };
 		FA75B4FD1D85E3BA008E71C8 /* AlexTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA75B4FC1D85E3BA008E71C8 /* AlexTableViewCell.swift */; };
@@ -29,6 +30,7 @@
 		FA00A25E1D71EFCB0091014E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA2418BC1D8B13B300202856 /* AlexDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlexDetailCell.swift; sourceTree = "<group>"; };
 		FA2418BE1D8B1D8100202856 /* AlexDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlexDetailViewController.swift; sourceTree = "<group>"; };
+		FA4AB8BC1D8B30B10022D3FC /* AlexRateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlexRateController.swift; sourceTree = "<group>"; };
 		FA75B4F81D85E11A008E71C8 /* AlexUITableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlexUITableTableViewController.swift; sourceTree = "<group>"; };
 		FA75B4FA1D85E14D008E71C8 /* classRestaurants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = classRestaurants.swift; sourceTree = "<group>"; };
 		FA75B4FC1D85E3BA008E71C8 /* AlexTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlexTableViewCell.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				FA2418BE1D8B1D8100202856 /* AlexDetailViewController.swift */,
 				FA2418BC1D8B13B300202856 /* AlexDetailCell.swift */,
 				FA00A2531D71EFCB0091014E /* Main.storyboard */,
+				FA4AB8BC1D8B30B10022D3FC /* AlexRateController.swift */,
 				FA75B4FA1D85E14D008E71C8 /* classRestaurants.swift */,
 				FA75B4F81D85E11A008E71C8 /* AlexUITableTableViewController.swift */,
 				FA75B4FC1D85E3BA008E71C8 /* AlexTableViewCell.swift */,
@@ -157,6 +160,7 @@
 				FA00A2501D71EFCB0091014E /* AppDelegate.swift in Sources */,
 				FA2418BD1D8B13B300202856 /* AlexDetailCell.swift in Sources */,
 				FA2418BF1D8B1D8100202856 /* AlexDetailViewController.swift in Sources */,
+				FA4AB8BD1D8B30B10022D3FC /* AlexRateController.swift in Sources */,
 				FA75B4F91D85E11A008E71C8 /* AlexUITableTableViewController.swift in Sources */,
 				FA00A2581D71EFCB0091014E /* iOS9SDKStudy.xcdatamodeld in Sources */,
 			);

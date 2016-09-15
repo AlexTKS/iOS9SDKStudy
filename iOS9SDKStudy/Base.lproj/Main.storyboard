@@ -120,11 +120,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8QL-08-URs">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pw-iP-9Pf">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pw-iP-9Pf">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="205" id="lsU-bX-Zis"/>
                                                     </constraints>
@@ -154,12 +154,12 @@
                                     <outlet property="delegate" destination="X7l-ZL-Rqj" id="y5H-89-tmQ"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FmU-P4-lQY">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FmU-P4-lQY">
                                 <frame key="frameInset" minX="305" minY="83" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="rqp-qE-oQJ" kind="presentation" id="tiY-Hf-lUR"/>
+                                    <segue destination="rqp-qE-oQJ" kind="presentation" identifier="RateLink" id="tiY-Hf-lUR"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -170,11 +170,6 @@
                             <constraint firstAttribute="trailing" secondItem="I6H-Ec-VVI" secondAttribute="trailing" id="VQD-eF-JQC"/>
                             <constraint firstItem="I6H-Ec-VVI" firstAttribute="top" secondItem="eSC-Op-91U" secondAttribute="top" id="qCY-Io-jGA"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="FmU-P4-lQY"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="detailImage" destination="R2u-1i-cAy" id="fSE-NY-Iwf"/>
@@ -185,10 +180,10 @@
             </objects>
             <point key="canvasLocation" x="1088.8" y="626.53673163418296"/>
         </scene>
-        <!--View Controller-->
+        <!--Alex Rate Controller-->
         <scene sceneID="wWQ-2o-q0s">
             <objects>
-                <viewController id="rqp-qE-oQJ" sceneMemberID="viewController">
+                <viewController id="rqp-qE-oQJ" customClass="AlexRateController" customModule="iOS9SDKStudy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VpY-He-Wk6"/>
                         <viewControllerLayoutGuide type="bottom" id="hg3-LR-ghr"/>
@@ -196,12 +191,29 @@
                     <view key="view" contentMode="scaleToFill" id="wnx-hx-Zdk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zLZ-X0-V90"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="etk-IJ-vlp">
+                                <frame key="frameInset" minX="293" minY="41" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="zLZ-X0-V90" secondAttribute="trailing" id="0sP-J6-z5M"/>
+                            <constraint firstItem="zLZ-X0-V90" firstAttribute="leading" secondItem="wnx-hx-Zdk" secondAttribute="leading" id="Fqg-bv-MOY"/>
+                            <constraint firstItem="zLZ-X0-V90" firstAttribute="bottom" secondItem="hg3-LR-ghr" secondAttribute="top" id="KsH-bK-Uti"/>
+                            <constraint firstItem="zLZ-X0-V90" firstAttribute="top" secondItem="wnx-hx-Zdk" secondAttribute="top" id="UUv-6a-d5N"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="RestImage" destination="zLZ-X0-V90" id="L8a-dj-LKW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kPb-kl-ns6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1814" y="627"/>
+            <point key="canvasLocation" x="1813.5999999999999" y="626.53673163418296"/>
         </scene>
         <!--Списсок ресторанов-->
         <scene sceneID="3Xf-VY-ouO">

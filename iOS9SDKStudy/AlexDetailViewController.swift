@@ -24,8 +24,8 @@ class AlexDetailViewController: UIViewController, UITableViewDataSource, UITable
 		
 		detailImage.image = UIImage.init(named: restaurant.Image)
 		title = restaurant.Name
-		//tableView.estimatedRowHeight = 36
-		//tableView.rowHeight = UITableViewAutomaticDimension
+		tableView.estimatedRowHeight = 36
+		tableView.rowHeight = UITableViewAutomaticDimension
 		
     }
 	
@@ -64,15 +64,29 @@ class AlexDetailViewController: UIViewController, UITableViewDataSource, UITable
 		return cell
 		
 	}
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let cell = tableView.cellForRow(at: indexPath) as! AlexDetailCell
+		if cell.pName.text == iBeenHere
+		{
+			let listController = navigationController!.viewControllers[0] as! AlexUITableTableViewController
+			restaurant.IsVisited = !restaurant.IsVisited
+			cell.SetCell(pNameL: iBeenHere, pValueL: (restaurant.IsVisited) ? "Да": "Нет")
+			listController.renewSelectedCell(nil, row: nil)
+		}
+	}
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+		if segue.identifier! == "RateLink" {
+			let detViewController = segue.destination as! AlexRateController
+			detViewController.ImageName = restaurant.Image
+		}
     }
-    */
 
 }
