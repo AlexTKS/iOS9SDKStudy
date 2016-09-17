@@ -159,7 +159,7 @@ class AlexUITableTableViewController: UITableViewController {
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "detaleShowLink"
 		{
-			let id = tableView.indexPathForSelectedRow
+			let id = tableView.indexPath(for: sender! as! AlexTableViewCell)
 			let detViewController = segue.destination as! AlexDetailViewController
 			detViewController.restaurant = restaurants[id!.row]
 		}

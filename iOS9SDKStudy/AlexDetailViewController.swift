@@ -12,6 +12,7 @@ class AlexDetailViewController: UIViewController, UITableViewDataSource, UITable
 
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var detailImage: UIImageView!
+	@IBOutlet weak var RateButton: UIButton!
 	
 	var restaurant = Restaurant.init(name: "", type: "", location: "", phoneNumber: "", image: "", isVisited: false)
 	private let iBeenHere = "Я был здесь"
@@ -26,6 +27,8 @@ class AlexDetailViewController: UIViewController, UITableViewDataSource, UITable
 		title = restaurant.Name
 		tableView.estimatedRowHeight = 36
 		tableView.rowHeight = UITableViewAutomaticDimension
+		
+		UpdateRateButtonImage()
 		
     }
 	
@@ -86,7 +89,23 @@ class AlexDetailViewController: UIViewController, UITableViewDataSource, UITable
 		if segue.identifier! == "RateLink" {
 			let detViewController = segue.destination as! AlexRateController
 			detViewController.ImageName = restaurant.Image
+			detViewController.RestoranName = restaurant.Name
 		}
     }
+	
+	private func UpdateRateButtonImage() -> Void{
+		RateButton.setImage(UIImage(named: restaurant.Rating.rawValue), for: UIControlState.normal)
+	}
+	
+	@IBAction func close(segue: UIStoryboardSegue){
+		if segue.source is AlexRateController{
+			let RatingVC = segue.source as! AlexRateController
+			if let rating = RatingVC.rating{
+				restaurant.Rating = rating
+			}
+			UpdateRateButtonImage()
+		}
+		
+	}
 
 }

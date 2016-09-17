@@ -8,6 +8,13 @@
 
 import Foundation
 
+public enum RestRating: String {
+	case poor  = "dislike"
+	case good  = "good"
+	case great = "great"
+	case nRate = "rating"
+}
+
 class Restaurant {
     var Name = ""
     var `Type` = ""
@@ -15,6 +22,7 @@ class Restaurant {
     var Image = ""
     var IsVisited = false
     var phoneNumber = ""
+	var Rating = RestRating.nRate
     
     init(name: String, type: String, location: String, phoneNumber: String, image: String, isVisited: Bool) {
         self.Name = name
@@ -23,5 +31,6 @@ class Restaurant {
         self.Image = image
         self.IsVisited = isVisited
         self.phoneNumber = phoneNumber
+		self.Rating = .nRate
     }
 }

@@ -12,20 +12,47 @@ class AlexRateController: UIViewController {
 
 	
 	@IBOutlet weak var RestImage: UIImageView!
-	var ImageName: String = ""
+	@IBOutlet weak var RestName: UILabel!
+	
+	public var ImageName: String = ""
+	public var RestoranName: String = ""
+	
+	public var rating: RestRating?
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
 		RestImage.image = UIImage(named: ImageName)
+		RestName.text   = RestoranName
+		
+		let BlurEffect = UIBlurEffect.init(style: .dark)
+		let BlurEffectView = UIVisualEffectView.init(effect: BlurEffect)
+		BlurEffectView.frame = view.bounds
+		RestImage.addSubview(BlurEffectView)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+	
+	/*
+	override func viewDidAppear(_ animated: Bool) {
+		<#code#>
+	}
+*/
+	
+	
+	@IBAction func SetRating(_ sender: UIButton) {
+		switch sender.tag {
+		case 1:  rating = .poor
+		case 2:  rating = .good
+		case 3:  rating = .great
+		default: rating = .nRate
+		}
+		performSegue(withIdentifier: "UnwindToDetale", sender: sender)
+	}
 
     /*
     // MARK: - Navigation
