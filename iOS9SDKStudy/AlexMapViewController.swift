@@ -23,7 +23,10 @@ class AlexMapViewController: UIViewController {
 		let GeoCoder = CLGeocoder()
 		GeoCoder.geocodeAddressString(restaurant.Location) { (Placemarks, Error) in
 			if Error != nil{
-				// alert
+				let Alert = UIAlertController.init(title: "Произошла ошибка получения адреса", message: Error as? String, preferredStyle: .alert)
+				let AlertAction = UIAlertAction.init(title: "OK", style: .cancel, handler: nil)
+				Alert.addAction(AlertAction)
+				self.present(Alert, animated: true, completion: nil)
 				return
 			}
 			

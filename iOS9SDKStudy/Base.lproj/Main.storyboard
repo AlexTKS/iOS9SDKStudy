@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="81"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KXf-tD-xbf" id="G7r-Rz-jce">
-                                    <frame key="frameInset" width="375" height="81"/>
+                                    <frame key="frameInset" width="375" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aej-zT-Mwv">
@@ -88,7 +88,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Список ресторанов" id="GGx-Io-Q1C">
-                        <barButtonItem key="rightBarButtonItem" title="Правка" id="8Id-xd-OXS"/>
+                        <barButtonItem key="rightBarButtonItem" title="Правка" id="8Id-xd-OXS">
+                            <connections>
+                                <action selector="EditTV:" destination="Kuk-9l-IEk" id="Oau-JQ-nEx"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6T7-rP-cMg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -118,7 +122,7 @@
                                         <rect key="frame" x="0.0" y="342" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4gh-xR-zD0" id="EXD-EK-5eN">
-                                            <frame key="frameInset" width="375" height="44"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8QL-08-URs">
