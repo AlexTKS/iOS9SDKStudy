@@ -96,6 +96,9 @@ class AlexDetailViewController: UIViewController, UITableViewDataSource, UITable
 			let detViewController = segue.destination as! AlexRateController
 			detViewController.ImageName = restaurant.Image
 			detViewController.RestoranName = restaurant.Name
+		}else if segue.identifier! == "MapLink"{
+			let detViewController = segue.destination as! AlexMapViewController
+			detViewController.restaurant = restaurant
 		}
     }
 	

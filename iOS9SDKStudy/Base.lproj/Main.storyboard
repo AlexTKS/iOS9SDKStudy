@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="81"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KXf-tD-xbf" id="G7r-Rz-jce">
-                                    <frame key="frameInset" width="375" height="80"/>
+                                    <frame key="frameInset" width="375" height="81"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aej-zT-Mwv">
@@ -118,7 +118,7 @@
                                         <rect key="frame" x="0.0" y="342" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4gh-xR-zD0" id="EXD-EK-5eN">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8QL-08-URs">
@@ -173,6 +173,14 @@
                                     <segue destination="rqp-qE-oQJ" kind="presentation" identifier="RateLink" id="tiY-Hf-lUR"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5yb-bH-PHr">
+                                <frame key="frameInset" minX="319" minY="131" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="map"/>
+                                <connections>
+                                    <segue destination="bdm-6h-MWS" kind="show" identifier="MapLink" id="Uw6-Md-Dfs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -193,6 +201,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h8Y-sQ-nND" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1088.8" y="626.53673163418296"/>
+        </scene>
+        <!--Alex Map View Controller-->
+        <scene sceneID="Jdn-Qh-uxv">
+            <objects>
+                <viewController id="bdm-6h-MWS" customClass="AlexMapViewController" customModule="iOS9SDKStudy" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pzg-al-VGX"/>
+                        <viewControllerLayoutGuide type="bottom" id="qPG-Pf-8x7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="R4S-Pv-bTt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="PoG-Mw-tHt">
+                                <connections>
+                                    <outlet property="delegate" destination="bdm-6h-MWS" id="wBu-I4-XAE"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PoG-Mw-tHt" firstAttribute="leading" secondItem="R4S-Pv-bTt" secondAttribute="leading" id="2Mo-FS-wD9"/>
+                            <constraint firstItem="PoG-Mw-tHt" firstAttribute="top" secondItem="R4S-Pv-bTt" secondAttribute="top" id="NDx-fG-tz6"/>
+                            <constraint firstItem="PoG-Mw-tHt" firstAttribute="bottom" secondItem="qPG-Pf-8x7" secondAttribute="top" id="Ucr-iB-1E4"/>
+                            <constraint firstAttribute="trailing" secondItem="PoG-Mw-tHt" secondAttribute="trailing" id="cN6-QF-aTz"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="PoG-Mw-tHt" id="8uU-hH-dhc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mtw-wh-2Ms" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1872.5" y="992.5"/>
         </scene>
         <!--Alex Rate Controller-->
         <scene sceneID="wWQ-2o-q0s">
@@ -318,7 +360,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kPb-kl-ns6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="DHv-m0-goo" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1820" y="627"/>
+            <point key="canvasLocation" x="1874" y="294"/>
         </scene>
         <!--Списсок ресторанов-->
         <scene sceneID="3Xf-VY-ouO">
@@ -342,6 +384,7 @@
         <image name="dislike" width="64" height="64"/>
         <image name="good" width="128" height="128"/>
         <image name="great" width="128" height="128"/>
+        <image name="map" width="32" height="32"/>
         <image name="rating" width="128" height="128"/>
     </resources>
 </document>
