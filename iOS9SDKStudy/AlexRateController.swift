@@ -13,6 +13,7 @@ class AlexRateController: UIViewController {
 	
 	@IBOutlet weak var RestImage: UIImageView!
 	@IBOutlet weak var RestName: UILabel!
+	@IBOutlet weak var AllRateButtons: UIStackView!
 	
 	public var ImageName: String = ""
 	public var RestoranName: String = ""
@@ -30,6 +31,11 @@ class AlexRateController: UIViewController {
 		let BlurEffectView = UIVisualEffectView.init(effect: BlurEffect)
 		BlurEffectView.frame = view.bounds
 		RestImage.addSubview(BlurEffectView)
+		
+		let sizeFrom = CGAffineTransform(a: 0, b: 0, c: 0, d: 0, tx: 0, ty: 0)
+		let possFrom = CGAffineTransform(translationX: 0, y: view.bounds.height)
+		AllRateButtons.transform = sizeFrom.concatenating(possFrom)
+		
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,11 +43,13 @@ class AlexRateController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 	
-	/*
+	
 	override func viewDidAppear(_ animated: Bool) {
-		<#code#>
+		UIView.animate(withDuration: 0.7, delay: 0, options: [], animations: {
+			self.AllRateButtons.transform = CGAffineTransform.identity
+			}, completion: nil)
 	}
-*/
+
 	
 	
 	@IBAction func SetRating(_ sender: UIButton) {

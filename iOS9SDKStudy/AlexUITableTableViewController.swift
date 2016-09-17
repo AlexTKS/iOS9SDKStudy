@@ -41,8 +41,28 @@ class AlexUITableTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+		
+		navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+		navigationController?.hidesBarsOnSwipe = true
     }
+	
+	@IBAction func EditTV(_ sender: AnyObject) {
+		if tableView.isEditing{
+			(sender as! UIBarButtonItem).title = "Правка"
+			tableView.setEditing(false, animated: true)
+			navigationController?.hidesBarsOnSwipe = true
+		}else{
+			(sender as! UIBarButtonItem).title = "Готово"
+			tableView.setEditing(true, animated: true)
+			navigationController?.hidesBarsOnSwipe = false
+		}
+	}
+	/*
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		navigationController?.hidesBarsOnSwipe = true
+	}*/
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -139,9 +159,11 @@ class AlexUITableTableViewController: UITableViewController {
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to toIndexPath: IndexPath) {
 		
-		let MovingRest = restaurants[(fromIndexPath as NSIndexPath).row]
-		restaurants.remove(at: (fromIndexPath as NSIndexPath).row)
-		restaurants.insert(MovingRest, at: (toIndexPath as NSIndexPath).row)
+		if fromIndexPath.row != toIndexPath.row {
+			let MovingRest = restaurants[(fromIndexPath as NSIndexPath).row]
+			restaurants.remove(at: (fromIndexPath as NSIndexPath).row)
+			restaurants.insert(MovingRest, at: (toIndexPath as NSIndexPath).row)
+		}
 
     }
 

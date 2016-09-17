@@ -32,6 +32,12 @@ class AlexDetailViewController: UIViewController, UITableViewDataSource, UITable
 		
     }
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		navigationController?.hidesBarsOnSwipe = false
+		navigationController?.setNavigationBarHidden(false, animated: animated)
+	}
+	
 	func numberOfSections(in tableView: UITableView) -> Int {
 		// #warning Incomplete implementation, return the number of sections
 		return 1
