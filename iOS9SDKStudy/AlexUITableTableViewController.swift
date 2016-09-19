@@ -49,11 +49,11 @@ class AlexUITableTableViewController: UITableViewController {
 	
 	@IBAction func EditTV(_ sender: AnyObject) {
 		if tableView.isEditing{
-			(sender as! UIBarButtonItem).title = "Правка"
+			//(sender as! UIBarButtonItem).title = "Правка"
 			tableView.setEditing(false, animated: true)
 			navigationController?.hidesBarsOnSwipe = true
 		}else{
-			(sender as! UIBarButtonItem).title = "Готово"
+			//(sender as! UIBarButtonItem).title = "Готово"
 			tableView.setEditing(true, animated: true)
 			navigationController?.hidesBarsOnSwipe = false
 		}
@@ -185,6 +185,10 @@ class AlexUITableTableViewController: UITableViewController {
 			let detViewController = segue.destination as! AlexDetailViewController
 			detViewController.restaurant = restaurants[id!.row]
 		}
+	}
+	
+	@IBAction func UnwingeToRoot(segue: UIStoryboardSegue){
+	
 	}
 
 }
