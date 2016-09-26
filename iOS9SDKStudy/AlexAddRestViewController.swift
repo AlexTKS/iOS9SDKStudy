@@ -40,7 +40,7 @@ class AlexAddRestViewController: UITableViewController, UIImagePickerControllerD
 				if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
 					self.ImagePicker.allowsEditing = false
 					self.ImagePicker.sourceType = .photoLibrary
-					self.present(self.ImagePicker, animated: false, completion: nil)
+					self.present(self.ImagePicker, animated: true, completion: nil)
 			}
 			})
 			let FromCameraAction = UIAlertAction(title: "Из камеры", style: .default, handler: { (Action) in
@@ -53,7 +53,7 @@ class AlexAddRestViewController: UITableViewController, UIImagePickerControllerD
 					self.ImagePicker.cameraCaptureMode = .photo
 					self.ImagePicker.cameraFlashMode = .auto
 					self.ImagePicker.showsCameraControls = true
-					self.present(self.ImagePicker, animated: false, completion: nil)
+					self.present(self.ImagePicker, animated: true, completion: nil)
 				}
 			})
 			let CancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
@@ -70,8 +70,8 @@ class AlexAddRestViewController: UITableViewController, UIImagePickerControllerD
 		AddingImage.contentMode = .scaleAspectFill
 		AddingImage.clipsToBounds = true
 		
-		/*if picker.sourceType == .camera {
-			let metadata = info[UIImagePickerControllerMediaMetadata] as? NSDictionary
+		/*if picker.sourceType == .photoLibrary {
+			//let metadata = info[UIImagePickerControllerMediaMetadata] as? NSDictionary
 			let PHAsset = PHAssetChangeRequest.creationRequestForAsset(from: AddingImage.image!)
 			let GPS = PHAsset.location
 		}*/
