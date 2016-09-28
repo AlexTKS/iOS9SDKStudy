@@ -22,18 +22,16 @@ class AlexTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    func fill() -> Void
-    {
-        self.Name.text = restaurant.Name
-        self.Type.text = restaurant.Type
-        self.Location.text = restaurant.Location
-        self.RestImage.image = UIImage.init(named: restaurant.Image)
-    }
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+		
+		self.Name.text = restaurant.Name
+		self.Type.text = restaurant.Type
+		self.Location.text = restaurant.Location
+		self.RestImage.image = UIImage.init(named: restaurant.Image)
+		
     }
-    
+	
 }

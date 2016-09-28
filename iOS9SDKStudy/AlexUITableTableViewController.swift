@@ -85,7 +85,6 @@ class AlexUITableTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RootTableCell", for: indexPath) as! AlexTableViewCell
 
 		cell.restaurant = restaurants[(indexPath as NSIndexPath).row]
-		cell.fill()
 		
 		renewSelectedCell(cell, row: (indexPath as NSIndexPath).row)
 		

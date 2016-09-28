@@ -243,7 +243,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mtw-wh-2Ms" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1876" y="1084.4077961019491"/>
+            <point key="canvasLocation" x="1580" y="1061"/>
         </scene>
         <!--Добавление ресторана-->
         <scene sceneID="thM-qP-2Gm">
@@ -562,7 +562,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kPb-kl-ns6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="DHv-m0-goo" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1876" y="405"/>
+            <point key="canvasLocation" x="1580" y="307"/>
         </scene>
         <!--Списсок ресторанов-->
         <scene sceneID="3Xf-VY-ouO">
