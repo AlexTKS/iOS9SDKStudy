@@ -15,7 +15,7 @@ class AlexRateController: UIViewController {
 	@IBOutlet weak var RestName: UILabel!
 	@IBOutlet weak var AllRateButtons: UIStackView!
 	
-	public var ImageName: String = ""
+	public var ImageData: Data!
 	public var RestoranName: String = ""
 	
 	public var rating: RestRating?
@@ -24,7 +24,7 @@ class AlexRateController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-		RestImage.image = UIImage(named: ImageName)
+		RestImage.image = UIImage(data: ImageData)
 		RestName.text   = RestoranName
 		
 		let BlurEffect = UIBlurEffect.init(style: .dark)

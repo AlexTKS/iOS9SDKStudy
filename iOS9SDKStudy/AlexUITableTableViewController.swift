@@ -10,7 +10,7 @@ import UIKit
 
 class AlexUITableTableViewController: UITableViewController {
 
-	var restaurants: [Restaurant] =
+	var restaurants: [Restaurant] = []/*
 		[
 			Restaurant(name: "Cafe Deadend", type: "Coffee & Tea Shop", location: "G/F, 72 Po Hing Fong, Sheung Wan, Hong Kong", phoneNumber: "232-923423", image: "cafedeadend.jpg", isVisited: false),
 			Restaurant(name: "Homei", type: "Cafe", location: "Shop B, G/F, 22-24A Tai Ping San Street SOHO, Sheung Wan, Hong Kong", phoneNumber: "348-233423", image: "homei.jpg", isVisited: false),
@@ -33,7 +33,8 @@ class AlexUITableTableViewController: UITableViewController {
 			Restaurant(name: "Donostia", type: "Spanish", location: "10 Seymour Place London W1H 7ND United Kingdom", phoneNumber: "722-232323", image: "donostia.jpg", isVisited: false),
 			Restaurant(name: "Royal Oak", type: "British", location: "2 Regency Street London SW1P 4BZ United Kingdom", phoneNumber: "343-988834", image: "royaloak.jpg", isVisited: false),
 			Restaurant(name: "Thai Cafe", type: "Thai", location: "22 Charlwood Street London SW1V 2DY Pimlico", phoneNumber: "432-344050", image: "thaicafe.jpg", isVisited: false)
-	]
+	]*/
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,6 +46,9 @@ class AlexUITableTableViewController: UITableViewController {
 		
 		navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 		navigationController?.hidesBarsOnSwipe = true
+		
+		restaurants = FetchRestaurants()
+
     }
 	
 	@IBAction func EditTV(_ sender: AnyObject) {
@@ -85,6 +89,7 @@ class AlexUITableTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RootTableCell", for: indexPath) as! AlexTableViewCell
 
 		cell.restaurant = restaurants[(indexPath as NSIndexPath).row]
+		cell.FillCell()
 		
 		renewSelectedCell(cell, row: (indexPath as NSIndexPath).row)
 		
@@ -108,7 +113,7 @@ class AlexUITableTableViewController: UITableViewController {
 			index = (currentIndexPath as NSIndexPath).row
 		}
 		
-		if restaurants[index].IsVisited
+		if restaurants[index].isVisited
 		{
 			cell.accessoryType = .checkmark
 		}
@@ -140,13 +145,14 @@ class AlexUITableTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
 		let DeleteAction = UITableViewRowAction.init(style: .default, title: "Удалить") { (Action, indexPath) in
 			// Delete the row from the data source
+			self.restaurants[indexPath.row].deleteFromContext()
 			self.restaurants.remove(at: indexPath.row)
 			tableView.deleteRows(at: [indexPath], with: .fade)
 		}
 		
 		let shareAction = UITableViewRowAction(style: .normal, title: "Поделиться") { (Action, indexPath) in
-			let midText = (self.restaurants[indexPath.row].IsVisited) ? "был" : "не был"
-			let defaultText = "Я " + midText + " в ресторане " + self.restaurants[indexPath.row].Name
+			let midText = (self.restaurants[indexPath.row].isVisited) ? "был" : "не был"
+			let defaultText = "Я " + midText + " в ресторане " + self.restaurants[indexPath.row].name
 			let active1 = UIActivity.init()
 			let actionController = UIActivityViewController.init(activityItems: [defaultText], applicationActivities: [active1])
 			self.present(actionController, animated: true, completion: nil)
@@ -162,6 +168,16 @@ class AlexUITableTableViewController: UITableViewController {
 			let MovingRest = restaurants[(fromIndexPath as NSIndexPath).row]
 			restaurants.remove(at: (fromIndexPath as NSIndexPath).row)
 			restaurants.insert(MovingRest, at: (toIndexPath as NSIndexPath).row)
+		}
+		
+		var index = 0
+		let maxIndex = restaurants.count - 1
+		
+		while index < maxIndex {
+			if Int(restaurants[index].sortCriteria) != index {
+				restaurants[index].sortCriteria = Int16(index)
+			}
+			index += 1
 		}
 
     }
@@ -187,6 +203,21 @@ class AlexUITableTableViewController: UITableViewController {
 	}
 	
 	@IBAction func UnwingeToRoot(segue: UIStoryboardSegue){
+		
+		var SortCriteria = 0
+		
+		if segue.source is AlexAddRestViewController{
+			let addVC = segue.source as! AlexAddRestViewController
+			if addVC.RestoratAdded {
+				// Add SortCriteria
+				for restaurant in restaurants{
+					SortCriteria = max(SortCriteria, Int(restaurant.sortCriteria))
+				}
+				addVC.addRestorant.sortCriteria = SortCriteria + 1
+				restaurants.append(addVC.addRestorant)
+				tableView.reloadData()
+			}
+		}
 	
 	}
 

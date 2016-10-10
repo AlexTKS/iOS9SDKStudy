@@ -21,7 +21,7 @@ class AlexMapViewController: UIViewController {
         // Do any additional setup after loading the view.
 		
 		let GeoCoder = CLGeocoder()
-		GeoCoder.geocodeAddressString(restaurant.Location) { (Placemarks, Error) in
+		GeoCoder.geocodeAddressString(restaurant.location) { (Placemarks, Error) in
 			if Error != nil{
 				let Alert = UIAlertController.init(title: "Произошла ошибка получения адреса", message: Error as? String, preferredStyle: .alert)
 				let AlertAction = UIAlertAction.init(title: "OK", style: .cancel, handler: nil)
@@ -35,8 +35,8 @@ class AlexMapViewController: UIViewController {
 				
 				if let location = Placemark.location{
 					let annotation = MKPointAnnotation()
-					annotation.title = self.restaurant.Name
-					annotation.subtitle = self.restaurant.Type
+					annotation.title = self.restaurant.name
+					annotation.subtitle = self.restaurant.type
 					annotation.coordinate = location.coordinate
 					self.mapView.showAnnotations([annotation], animated: true)
 					self.mapView.selectAnnotation(annotation, animated: true)

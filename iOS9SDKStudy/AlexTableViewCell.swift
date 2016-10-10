@@ -10,7 +10,7 @@ import UIKit
 
 class AlexTableViewCell: UITableViewCell {
     
-    var restaurant = Restaurant.init(name: "", type: "", location: "", phoneNumber: "", image: "", isVisited: false)
+	var restaurant:Restaurant!//.init(name: "", type: "", location: "", phoneNumber: "", image: "", isVisited: false)
 
     @IBOutlet weak var RestImage: UIImageView!
     @IBOutlet weak var Name: UILabel!
@@ -27,11 +27,17 @@ class AlexTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
 		
-		self.Name.text = restaurant.Name
-		self.Type.text = restaurant.Type
-		self.Location.text = restaurant.Location
-		self.RestImage.image = UIImage.init(named: restaurant.Image)
-		
     }
+	
+	public func FillCell() {
+		
+		self.Name.text = restaurant.name
+		self.Type.text = restaurant.type
+		self.Location.text = restaurant.location
+		if let restaurantImage = restaurant.image{
+			self.RestImage.image = UIImage.init(data: restaurantImage)
+		}
+		
+	}
 	
 }

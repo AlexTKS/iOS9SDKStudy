@@ -9,11 +9,19 @@
 import UIKit
 import Photos
 
+
 class AlexAddRestViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
 	@IBOutlet weak var AddingImage: UIImageView!
+	@IBOutlet weak var iBeenHere: UISwitch!
+	@IBOutlet weak var eName: UITextField!
+	@IBOutlet weak var eType: UITextField!
+	@IBOutlet weak var eLocation: UITextField!
 	
-	let ImagePicker = UIImagePickerController()
+	private let ImagePicker = UIImagePickerController()
+	
+	public var addRestorant:Restaurant!  
+	public var RestoratAdded = false
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,6 +88,27 @@ class AlexAddRestViewController: UITableViewController, UIImagePickerControllerD
 		dismiss(animated: true, completion: nil)
 	}
 
+	@IBAction func AddingRestorant(_ sender: AnyObject) {
+		
+		let name = eName.text
+		let type = eType.text
+		let location = eLocation.text
+		
+		if let restaurantImage = AddingImage.image {
+			if let addRest = AddNewRestaurant(name: name!, type: type!, location: location!, phoneNumber: "", imageName: nil, imageData: UIImagePNGRepresentation(restaurantImage), isVisited: iBeenHere.isOn) {
+				addRestorant = addRest
+				addRestorant.FillRestaurant()
+				RestoratAdded = true
+				performSegue(withIdentifier: "UnwingeToRoot", sender: sender)
+			}else{
+				let alertController = UIAlertController(title: "Oops", message: "We can't proceed because one of the fields is blank. Please note that all fields are required.", preferredStyle: UIAlertControllerStyle.alert)
+				alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+				self.present(alertController, animated: true, completion: nil)
+			}
+		}
+		
+		
+	}
     // MARK: - Table view data source
 
 	/*

@@ -14,7 +14,7 @@ class AlexDetailViewController: UIViewController, UITableViewDataSource, UITable
 	@IBOutlet weak var detailImage: UIImageView!
 	@IBOutlet weak var RateButton: UIButton!
 	
-	var restaurant = Restaurant.init(name: "", type: "", location: "", phoneNumber: "", image: "", isVisited: false)
+	var restaurant:Restaurant!//.init(name: "", type: "", location: "", phoneNumber: "", image: "", isVisited: false)
 	private let iBeenHere = "Я был здесь"
 	private let tel = "Телефон"
 	
@@ -23,8 +23,10 @@ class AlexDetailViewController: UIViewController, UITableViewDataSource, UITable
 
         // Do any additional setup after loading the view.
 		
-		detailImage.image = UIImage.init(named: restaurant.Image)
-		title = restaurant.Name
+		if let restaurantImage = restaurant.image{
+			detailImage.image = UIImage.init(data: restaurantImage)
+		}
+		title = restaurant.name
 		tableView.estimatedRowHeight = 36
 		tableView.rowHeight = UITableViewAutomaticDimension
 		
@@ -58,15 +60,19 @@ class AlexDetailViewController: UIViewController, UITableViewDataSource, UITable
 		let cell = tableView.dequeueReusableCell(withIdentifier: "rCell", for: indexPath) as! AlexDetailCell
 		switch indexPath.row {
 		case 0:
-			cell.SetCell(pNameL: "Имя", pValueL: restaurant.Name)
+			cell.SetCell(pNameL: "Имя", pValueL: restaurant.name)
 		case 1:
-			cell.SetCell(pNameL: "Тип", pValueL: restaurant.Type)
+			cell.SetCell(pNameL: "Тип", pValueL: restaurant.type)
 		case 2:
-			cell.SetCell(pNameL: "Где найти", pValueL: restaurant.Location)
+			cell.SetCell(pNameL: "Где найти", pValueL: restaurant.location)
 		case 3:
-			cell.SetCell(pNameL: tel, pValueL: restaurant.phoneNumber)
+			if let phoneNumber = restaurant.phoneNumber{
+				cell.SetCell(pNameL: tel, pValueL: phoneNumber)
+			}else{
+				cell.SetCell(pNameL: tel, pValueL: "")
+			}
 		case 4:
-			cell.SetCell(pNameL: iBeenHere, pValueL: (restaurant.IsVisited) ? "Да": "Нет")
+			cell.SetCell(pNameL: iBeenHere, pValueL: (restaurant.isVisited) ? "Да": "Нет")
 		default:
 			cell.SetCell(pNameL: "", pValueL: "")
 		}
@@ -79,8 +85,8 @@ class AlexDetailViewController: UIViewController, UITableViewDataSource, UITable
 		if cell.pName.text == iBeenHere
 		{
 			let listController = navigationController!.viewControllers[0] as! AlexUITableTableViewController
-			restaurant.IsVisited = !restaurant.IsVisited
-			cell.SetCell(pNameL: iBeenHere, pValueL: (restaurant.IsVisited) ? "Да": "Нет")
+			restaurant.isVisited = !restaurant.isVisited
+			cell.SetCell(pNameL: iBeenHere, pValueL: (restaurant.isVisited) ? "Да": "Нет")
 			listController.renewSelectedCell(nil, row: nil)
 		}
 	}
@@ -94,8 +100,8 @@ class AlexDetailViewController: UIViewController, UITableViewDataSource, UITable
         // Pass the selected object to the new view controller.
 		if segue.identifier! == "RateLink" {
 			let detViewController = segue.destination as! AlexRateController
-			detViewController.ImageName = restaurant.Image
-			detViewController.RestoranName = restaurant.Name
+			detViewController.ImageData = restaurant.image
+			detViewController.RestoranName = restaurant.name
 		}else if segue.identifier! == "MapLink"{
 			let detViewController = segue.destination as! AlexMapViewController
 			detViewController.restaurant = restaurant
@@ -103,14 +109,15 @@ class AlexDetailViewController: UIViewController, UITableViewDataSource, UITable
     }
 	
 	private func UpdateRateButtonImage() -> Void{
-		RateButton.setImage(UIImage(named: restaurant.Rating.rawValue), for: UIControlState.normal)
+		RateButton.setImage(UIImage(named: restaurant.ratingRaw!), for: UIControlState.normal)
 	}
 	
 	@IBAction func close(segue: UIStoryboardSegue){
 		if segue.source is AlexRateController{
 			let RatingVC = segue.source as! AlexRateController
 			if let rating = RatingVC.rating{
-				restaurant.Rating = rating
+				restaurant.rating = rating
+				restaurant.RenewRating()
 			}
 			UpdateRateButtonImage()
 		}
