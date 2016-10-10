@@ -12,6 +12,7 @@
 		FA00A2581D71EFCB0091014E /* iOS9SDKStudy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA00A2561D71EFCB0091014E /* iOS9SDKStudy.xcdatamodeld */; };
 		FA00A25A1D71EFCB0091014E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA00A2591D71EFCB0091014E /* Assets.xcassets */; };
 		FA00A25D1D71EFCB0091014E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA00A25B1D71EFCB0091014E /* LaunchScreen.storyboard */; };
+		FA14A1BC1DABE80A008AAEDD /* AlexDefaultFillTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA14A1BB1DABE80A008AAEDD /* AlexDefaultFillTableViewController.swift */; };
 		FA2418BD1D8B13B300202856 /* AlexDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2418BC1D8B13B300202856 /* AlexDetailCell.swift */; };
 		FA2418BF1D8B1D8100202856 /* AlexDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2418BE1D8B1D8100202856 /* AlexDetailViewController.swift */; };
 		FA4AB8BD1D8B30B10022D3FC /* AlexRateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4AB8BC1D8B30B10022D3FC /* AlexRateController.swift */; };
@@ -32,6 +33,7 @@
 		FA00A2591D71EFCB0091014E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA00A25C1D71EFCB0091014E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA00A25E1D71EFCB0091014E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA14A1BB1DABE80A008AAEDD /* AlexDefaultFillTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlexDefaultFillTableViewController.swift; sourceTree = "<group>"; };
 		FA2418BC1D8B13B300202856 /* AlexDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlexDetailCell.swift; sourceTree = "<group>"; };
 		FA2418BE1D8B1D8100202856 /* AlexDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlexDetailViewController.swift; sourceTree = "<group>"; };
 		FA4AB8BC1D8B30B10022D3FC /* AlexRateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlexRateController.swift; sourceTree = "<group>"; };
@@ -76,23 +78,56 @@
 		FA00A24E1D71EFCB0091014E /* iOS9SDKStudy */ = {
 			isa = PBXGroup;
 			children = (
-				FADFF6D51DA0694400B2C6E4 /* Restaurant+CoreDataProperties.swift */,
+				FA14A1BA1DABE75D008AAEDD /* RootTable */,
+				FA14A1B81DABE702008AAEDD /* DetailRateMapRestaurant */,
+				FA14A1B71DABE6D1008AAEDD /* ClassRestaurant */,
+				FA14A1B61DABE6A7008AAEDD /* AddRastourant */,
 				FA00A24F1D71EFCB0091014E /* AppDelegate.swift */,
-				FAEBE98E1D8D9C380090AB18 /* AlexMapViewController.swift */,
-				FA2418BE1D8B1D8100202856 /* AlexDetailViewController.swift */,
-				FA2418BC1D8B13B300202856 /* AlexDetailCell.swift */,
 				FA00A2531D71EFCB0091014E /* Main.storyboard */,
-				FAF437A11D8E8BF800E47476 /* AlexAddRestViewController.swift */,
-				FA4AB8BC1D8B30B10022D3FC /* AlexRateController.swift */,
-				FA75B4FA1D85E14D008E71C8 /* classRestaurants.swift */,
-				FA75B4F81D85E11A008E71C8 /* AlexUITableTableViewController.swift */,
-				FA75B4FC1D85E3BA008E71C8 /* AlexTableViewCell.swift */,
 				FA00A2591D71EFCB0091014E /* Assets.xcassets */,
 				FA00A25B1D71EFCB0091014E /* LaunchScreen.storyboard */,
 				FA00A25E1D71EFCB0091014E /* Info.plist */,
 				FA00A2561D71EFCB0091014E /* iOS9SDKStudy.xcdatamodeld */,
 			);
 			path = iOS9SDKStudy;
+			sourceTree = "<group>";
+		};
+		FA14A1B61DABE6A7008AAEDD /* AddRastourant */ = {
+			isa = PBXGroup;
+			children = (
+				FAF437A11D8E8BF800E47476 /* AlexAddRestViewController.swift */,
+				FA14A1BB1DABE80A008AAEDD /* AlexDefaultFillTableViewController.swift */,
+			);
+			name = AddRastourant;
+			sourceTree = "<group>";
+		};
+		FA14A1B71DABE6D1008AAEDD /* ClassRestaurant */ = {
+			isa = PBXGroup;
+			children = (
+				FA75B4FA1D85E14D008E71C8 /* classRestaurants.swift */,
+				FADFF6D51DA0694400B2C6E4 /* Restaurant+CoreDataProperties.swift */,
+			);
+			name = ClassRestaurant;
+			sourceTree = "<group>";
+		};
+		FA14A1B81DABE702008AAEDD /* DetailRateMapRestaurant */ = {
+			isa = PBXGroup;
+			children = (
+				FA2418BE1D8B1D8100202856 /* AlexDetailViewController.swift */,
+				FA2418BC1D8B13B300202856 /* AlexDetailCell.swift */,
+				FAEBE98E1D8D9C380090AB18 /* AlexMapViewController.swift */,
+				FA4AB8BC1D8B30B10022D3FC /* AlexRateController.swift */,
+			);
+			name = DetailRateMapRestaurant;
+			sourceTree = "<group>";
+		};
+		FA14A1BA1DABE75D008AAEDD /* RootTable */ = {
+			isa = PBXGroup;
+			children = (
+				FA75B4FC1D85E3BA008E71C8 /* AlexTableViewCell.swift */,
+				FA75B4F81D85E11A008E71C8 /* AlexUITableTableViewController.swift */,
+			);
+			name = RootTable;
 			sourceTree = "<group>";
 		};
 		FA7056771D9C74B700A2503C /* Frameworks */ = {
@@ -185,6 +220,7 @@
 				FA75B4FB1D85E14D008E71C8 /* classRestaurants.swift in Sources */,
 				FAEBE98F1D8D9C380090AB18 /* AlexMapViewController.swift in Sources */,
 				FA00A2501D71EFCB0091014E /* AppDelegate.swift in Sources */,
+				FA14A1BC1DABE80A008AAEDD /* AlexDefaultFillTableViewController.swift in Sources */,
 				FAF437A21D8E8BF800E47476 /* AlexAddRestViewController.swift in Sources */,
 				FADFF6D71DA0694400B2C6E4 /* Restaurant+CoreDataProperties.swift in Sources */,
 				FA2418BD1D8B13B300202856 /* AlexDetailCell.swift in Sources */,

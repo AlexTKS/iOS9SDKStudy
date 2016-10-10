@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -388,11 +389,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Добавление ресторана" id="Cua-rD-ZJ1">
-                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="nBv-DV-vNW">
-                            <connections>
-                                <segue destination="T1Y-Sv-dWu" kind="unwind" identifier="UnwingeToRoot" unwindAction="UnwingeToRootWithSegue:" id="lnm-gl-Om7"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem systemItem="stop" id="nBv-DV-vNW">
+                                <connections>
+                                    <segue destination="T1Y-Sv-dWu" kind="unwind" identifier="UnwingeToRoot" unwindAction="UnwingeToRootWithSegue:" id="lnm-gl-Om7"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="bookmarks" id="VHJ-HF-WyR">
+                                <connections>
+                                    <segue destination="u7t-Kc-e2o" kind="show" id="ksf-rD-x70"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="sJC-3u-nBv">
                             <connections>
                                 <action selector="AddingRestorant:" destination="dqj-ie-vLt" id="HNd-Ux-efC"/>
@@ -411,6 +419,42 @@
                 <exit id="T1Y-Sv-dWu" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1089" y="1394"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="dsU-TX-I7d">
+            <objects>
+                <tableViewController id="u7t-Kc-e2o" customClass="AlexDefaultFillTableViewController" customModule="iOS9SDKStudy" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="9hZ-wS-aXU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddingRest" id="ASa-g3-hBp">
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ASa-g3-hBp" id="3dG-fH-YPq">
+                                    <frame key="frameInset" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="u7t-Kc-e2o" id="fPj-3N-8SN"/>
+                            <outlet property="delegate" destination="u7t-Kc-e2o" id="O3f-Hu-OL5"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="bWT-on-VBv">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Y29-pa-apC">
+                            <connections>
+                                <segue destination="Sd5-Vs-DjM" kind="unwind" unwindAction="UnwingeToRootWithSegue:" id="hD4-5w-14V"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ePu-UG-y7S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Sd5-Vs-DjM" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1089" y="2099"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9Pt-t4-yCK">
