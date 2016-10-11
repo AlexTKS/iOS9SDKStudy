@@ -7,10 +7,10 @@
 //
 
 import UIKit
+import CoreLocation
 import Photos
 
-
-class AlexAddRestViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AlexAddRestViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate {
 
 	@IBOutlet weak var AddingImage: UIImageView!
 	@IBOutlet weak var iBeenHere: UISwitch!
@@ -19,6 +19,7 @@ class AlexAddRestViewController: UITableViewController, UIImagePickerControllerD
 	@IBOutlet weak var eLocation: UITextField!
 	
 	private let ImagePicker = UIImagePickerController()
+	private let LocationManager = CLLocationManager.init()
 	
 	public var addRestorant:Restaurant!  
 	public var RestoratAdded = false
@@ -33,6 +34,8 @@ class AlexAddRestViewController: UITableViewController, UIImagePickerControllerD
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
 		
 		ImagePicker.delegate = self
+		
+		LocationManager.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,18 +75,63 @@ class AlexAddRestViewController: UITableViewController, UIImagePickerControllerD
 		}
 	}
 	
+	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+		if locations.count > 0 {
+			let location = locations[0]
+			LocationToAddress(location: location)
+		}
+	}
+	
+	private func LocationToAddress(location:CLLocation) -> Void {
+		
+		let GeoCoder = CLGeocoder()
+		GeoCoder.reverseGeocodeLocation(location, completionHandler: { (stuff, Error) in
+			
+			if (Error != nil) {
+				print("reverse geodcode fail: \(Error?.localizedDescription)")
+				return
+			}
+			
+			if (stuff?.count)! > 0 {
+				let placemark = CLPlacemark(placemark: (stuff?[0])! as CLPlacemark)
+				
+				self.eLocation.text = String(format:"%@ %@\n%@ %@ %@\n%@",
+											 placemark.subThoroughfare != nil ? placemark.subThoroughfare! : "" ,
+											 placemark.thoroughfare != nil ? placemark.thoroughfare! : "",
+											 placemark.locality != nil ? placemark.locality! : "",
+											 placemark.postalCode != nil ? placemark.postalCode! : "",
+											 placemark.administrativeArea != nil ? placemark.administrativeArea! : "",
+											 placemark.country != nil ? placemark.country! : "")
+			}
+			else {
+				print("No Placemarks!")
+				return
+			}
+		})
+		
+	}
+	
+	func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+		print(error.localizedDescription)
+	}
 	
 	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
 		AddingImage.image = info[UIImagePickerControllerOriginalImage] as? UIImage
 		AddingImage.contentMode = .scaleAspectFill
 		AddingImage.clipsToBounds = true
 		
-		/*if picker.sourceType == .photoLibrary {
-			//let metadata = info[UIImagePickerControllerMediaMetadata] as? NSDictionary
-			let PHAsset = PHAssetChangeRequest.creationRequestForAsset(from: AddingImage.image!)
-			let GPS = PHAsset.location
-		}*/
-		
+		if picker.sourceType == .camera {
+			LocationManager.requestWhenInUseAuthorization()
+			if CLLocationManager.locationServicesEnabled() && CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+				LocationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+				LocationManager.distanceFilter  = kCLDistanceFilterNone
+				LocationManager.requestLocation()
+			}
+		}else if picker.sourceType == .photoLibrary {
+			//let library = PHPhotoLibrary.shared()
+			//let URL = info["UIImagePickerControllerReferenceURL"] as! NSURL
+		}
+	
 		// Destructor
 		dismiss(animated: true, completion: nil)
 	}
