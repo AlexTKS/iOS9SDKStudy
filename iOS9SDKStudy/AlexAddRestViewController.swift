@@ -95,13 +95,20 @@ class AlexAddRestViewController: UITableViewController, UIImagePickerControllerD
 			if (stuff?.count)! > 0 {
 				let placemark = CLPlacemark(placemark: (stuff?[0])! as CLPlacemark)
 				
+				let subThoroughfare = placemark.subThoroughfare != nil ? placemark.subThoroughfare! : ""
+				let thoroughfare = placemark.thoroughfare != nil ? placemark.thoroughfare! : ""
+				let locality = placemark.locality != nil ? placemark.locality! : ""
+				let postalCode = placemark.postalCode != nil ? placemark.postalCode! : ""
+				let administrativeArea = placemark.administrativeArea != nil ? placemark.administrativeArea! : ""
+				let country = placemark.country != nil ? placemark.country! : ""
+				
 				self.eLocation.text = String(format:"%@ %@\n%@ %@ %@\n%@",
-											 placemark.subThoroughfare != nil ? placemark.subThoroughfare! : "" ,
-											 placemark.thoroughfare != nil ? placemark.thoroughfare! : "",
-											 placemark.locality != nil ? placemark.locality! : "",
-											 placemark.postalCode != nil ? placemark.postalCode! : "",
-											 placemark.administrativeArea != nil ? placemark.administrativeArea! : "",
-											 placemark.country != nil ? placemark.country! : "")
+				                             subThoroughfare,
+											 thoroughfare,
+											 locality,
+											 postalCode,
+											 administrativeArea,
+											 country)
 			}
 			else {
 				print("No Placemarks!")
@@ -123,8 +130,8 @@ class AlexAddRestViewController: UITableViewController, UIImagePickerControllerD
 		if picker.sourceType == .camera {
 			LocationManager.requestWhenInUseAuthorization()
 			if CLLocationManager.locationServicesEnabled() && CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-				LocationManager.desiredAccuracy = kCLLocationAccuracyKilometer
-				LocationManager.distanceFilter  = kCLDistanceFilterNone
+				LocationManager.desiredAccuracy = kCLLocationAccuracyBest
+				LocationManager.distanceFilter  = 10
 				LocationManager.requestLocation()
 			}
 		}else if picker.sourceType == .photoLibrary {
@@ -143,7 +150,7 @@ class AlexAddRestViewController: UITableViewController, UIImagePickerControllerD
 		let location = eLocation.text
 		
 		if let restaurantImage = AddingImage.image {
-			if let addRest = AddNewRestaurant(name: name!, type: type!, location: location!, phoneNumber: "", imageName: nil, imageData: UIImagePNGRepresentation(restaurantImage), isVisited: iBeenHere.isOn) {
+			if let addRest = Restaurant.AddNewRestaurant(name: name!, type: type!, location: location!, phoneNumber: "", imageName: nil, imageData: UIImagePNGRepresentation(restaurantImage), isVisited: iBeenHere.isOn) {
 				addRestorant = addRest
 				addRestorant.FillRestaurant()
 				RestoratAdded = true

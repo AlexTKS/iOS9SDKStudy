@@ -24,7 +24,7 @@ class AlexUITableTableViewController: UITableViewController {
 		navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 		navigationController?.hidesBarsOnSwipe = true
 		
-		restaurants = FetchRestaurants()
+		restaurants = Restaurant.FetchRestaurants()
 
     }
 	
@@ -199,7 +199,7 @@ class AlexUITableTableViewController: UITableViewController {
 			let sourceVC = segue.source as! AlexDefaultFillTableViewController
 			for defRest in sourceVC.restaurants {
 				if defRest.ToAdd {
-					if let AddedRest = AddNewRestaurant(name: defRest.Name, type: defRest.Type, location: defRest.location, phoneNumber: defRest.phoneNumber, imageName: defRest.Image, imageData: nil, isVisited: defRest.IsVisited) {
+					if let AddedRest = Restaurant.AddNewRestaurant(name: defRest.Name, type: defRest.Type, location: defRest.location, phoneNumber: defRest.phoneNumber, imageName: defRest.Image, imageData: nil, isVisited: defRest.IsVisited) {
 						SortCriteria += 1
 						AddedRest.sortCriteria = Int16(SortCriteria)
 						AddedRest.FillRestaurant()
