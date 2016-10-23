@@ -4,13 +4,19 @@
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="isVisited" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="location" attributeType="String" syncable="YES"/>
-        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ratingRaw" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sortCriteria" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="type" attributeType="String" syncable="YES"/>
+        <relationship name="mainToPhoto" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="RestaurantPhotos" inverseName="photoToMain" inverseEntity="RestaurantPhotos" syncable="YES"/>
+    </entity>
+    <entity name="RestaurantPhotos" representedClassName=".RestaurantPhoto" syncable="YES">
+        <attribute name="photo" optional="YES" attributeType="Binary" syncable="YES"/>
+        <relationship name="photoToMain" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Restaurant" inverseName="mainToPhoto" inverseEntity="Restaurant" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Restaurant" positionX="-63" positionY="-18" width="128" height="165"/>
+        <element name="Restaurant" positionX="-45" positionY="0" width="128" height="180"/>
+        <element name="RestaurantPhotos" positionX="-18" positionY="90" width="128" height="75"/>
     </elements>
 </model>

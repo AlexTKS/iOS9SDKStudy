@@ -25,7 +25,7 @@ class AlexUITableTableViewController: UITableViewController {
 		navigationController?.hidesBarsOnSwipe = true
 		
 		restaurants = Restaurant.FetchRestaurants()
-
+		
     }
 	
 	@IBAction func EditTV(_ sender: AnyObject) {
@@ -199,10 +199,11 @@ class AlexUITableTableViewController: UITableViewController {
 			let sourceVC = segue.source as! AlexDefaultFillTableViewController
 			for defRest in sourceVC.restaurants {
 				if defRest.ToAdd {
-					if let AddedRest = Restaurant.AddNewRestaurant(name: defRest.Name, type: defRest.Type, location: defRest.location, phoneNumber: defRest.phoneNumber, imageName: defRest.Image, imageData: nil, isVisited: defRest.IsVisited) {
+					if let AddedRest = Restaurant.AddNewRestaurant(name: defRest.Name, type: defRest.Type, location: defRest.location, phoneNumber: defRest.phoneNumber, isVisited: defRest.IsVisited) {
 						SortCriteria += 1
 						AddedRest.sortCriteria = Int16(SortCriteria)
 						AddedRest.FillRestaurant()
+						AddedRest.AddRestaurantImage(image: UIImage.init(named: defRest.Image))
 						restaurants.append(AddedRest)
 					}
 				}

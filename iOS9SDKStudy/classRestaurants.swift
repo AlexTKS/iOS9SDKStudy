@@ -39,30 +39,24 @@ open class Restaurant: NSManagedObject {
 	
 	// Удаление ресторана из БД
 	public func deleteFromContext() {
-		if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
+		if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext {
 			managedObjectContext.delete(self)
 		}
 	}
 	
 	// Создание в базе нового ресторана
-	open class func AddNewRestaurant(name: String, type: String, location: String, phoneNumber: String, imageName: String?, imageData: Data?, isVisited: Bool) -> Restaurant? {
+	open class func AddNewRestaurant(name: String, type: String, location: String, phoneNumber: String, isVisited: Bool) -> Restaurant? {
 		
 		// Проверка на валидность введенных строк
 		if name == "" || type == "" || location == "" {
 			return nil
 		}
 		
-		if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
+		if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext {
 			let addRestorant = NSEntityDescription.insertNewObject(forEntityName: "Restaurant", into: managedObjectContext) as! Restaurant
 			addRestorant.name = name
 			addRestorant.type = type
 			addRestorant.location = location
-			if let imageNamed = imageName {
-				addRestorant.image = UIImagePNGRepresentation((UIImage(named: imageNamed))!)
-			}
-			if let imageDatad = imageData {
-				addRestorant.image = imageDatad
-			}
 			addRestorant.isVisited = isVisited
 			addRestorant.phoneNumber = phoneNumber
 			
@@ -82,7 +76,16 @@ open class Restaurant: NSManagedObject {
 		let sortDescriptor = NSSortDescriptor(key: "sortCriteria", ascending: true)
 		fetchRequest.sortDescriptors = [sortDescriptor]
 		
-		if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext {
+		
+		// Учим отборы
+		/*
+		let rtrt = "Cafe Lore"
+		let Predicate = NSPredicate.init(format: "name == %@", rtrt)
+		fetchRequest.predicate = Predicate
+		*/
+		
+		
+		if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext {
 			let fetchResultController = NSFetchedResultsController<Restaurant>(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
 			do {
 				try fetchResultController.performFetch()
@@ -97,6 +100,58 @@ open class Restaurant: NSManagedObject {
 		
 		return restaurants
 		
+	}
+	
+	public func AddRestaurantImage(image: UIImage?) {
+		
+		var thumbnail: UIImage? = nil
+		
+		if let OriginalImage = image {
+			let thumbnailSize  = CGSize.init(width: 72, height: 72)
+			var thumbnailPoint = CGPoint.init()
+			let thumbnailRect  = CGRect.init(origin: thumbnailPoint, size: thumbnailSize)
+			let OriginalSize = OriginalImage.size
+			let targetSize = CGSize.init(width: min(OriginalSize.height, OriginalSize.width), height: min(OriginalSize.height, OriginalSize.width))
+			if OriginalSize.height == OriginalSize.width && !thumbnailSize.equalTo(OriginalSize) {
+				UIGraphicsBeginImageContextWithOptions(thumbnailSize, false, 0)
+				OriginalImage.draw(in: thumbnailRect)
+				thumbnail = UIGraphicsGetImageFromCurrentImageContext()
+				UIGraphicsEndImageContext()
+			}else if !thumbnailSize.equalTo(OriginalSize){
+				let widthFactor  = targetSize.width  / OriginalSize.width
+				let heightFactor = targetSize.height / OriginalSize.height
+				let scaleFactor  = (widthFactor < heightFactor) ? widthFactor : heightFactor
+				let scaledWidth  = OriginalSize.width  * scaleFactor
+				let scaledHeight = OriginalSize.height * scaleFactor
+				// center the image
+				if widthFactor > heightFactor {
+					thumbnailPoint.y = (OriginalSize.height - scaledHeight) / 2
+				}
+				if widthFactor < heightFactor {
+					thumbnailPoint.x = (OriginalSize.width - scaledWidth) / 2
+				}
+				let targetRect = CGRect.init(origin: thumbnailPoint, size: targetSize)
+				if let serviceImage = OriginalImage.cgImage {
+					if let cropedImage = serviceImage.cropping(to: targetRect) {
+						UIGraphicsBeginImageContextWithOptions(thumbnailSize, false, 0)
+						let workIV = UIImage.init(cgImage: cropedImage)
+						workIV.draw(in: thumbnailRect)
+						thumbnail = UIGraphicsGetImageFromCurrentImageContext()
+						UIGraphicsEndImageContext()
+					}
+				}
+			}else{
+				thumbnail = image
+			}
+		}
+		
+		if let thumbnailImage = thumbnail {
+			self.image = UIImageJPEGRepresentation(thumbnailImage, 80)
+			if let addRestaurantPhoto = RestaurantPhoto.AddNewRestaurantPhoto() {
+				addRestaurantPhoto.photo = UIImagePNGRepresentation(image!)
+				self.mainToPhoto = addRestaurantPhoto
+			}
+		}
 	}
 	
 }

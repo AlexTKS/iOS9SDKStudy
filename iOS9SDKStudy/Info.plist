@@ -19,7 +19,7 @@
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Для установки фото ресторана</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.1</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Для фотографирования ресторана</string>
 	<key>CFBundleSignature</key>

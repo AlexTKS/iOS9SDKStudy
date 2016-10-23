@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import Photos
+//import CoreImage
 
 class AlexAddRestViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate {
 
@@ -123,24 +124,26 @@ class AlexAddRestViewController: UITableViewController, UIImagePickerControllerD
 	}
 	
 	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-		AddingImage.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-		AddingImage.contentMode = .scaleAspectFill
-		AddingImage.clipsToBounds = true
-		
-		if picker.sourceType == .camera {
-			LocationManager.requestWhenInUseAuthorization()
-			if CLLocationManager.locationServicesEnabled() && CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-				LocationManager.desiredAccuracy = kCLLocationAccuracyBest
-				LocationManager.distanceFilter  = 10
-				LocationManager.requestLocation()
+		if let OriginalImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+				AddingImage.image = OriginalImage
+				AddingImage.contentMode = .scaleAspectFill
+				AddingImage.clipsToBounds = true
+			
+			if picker.sourceType == .camera {
+				LocationManager.requestWhenInUseAuthorization()
+				if CLLocationManager.locationServicesEnabled() && CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+					LocationManager.desiredAccuracy = kCLLocationAccuracyBest
+					LocationManager.distanceFilter  = 10
+					LocationManager.requestLocation()
+				}
+			}else if picker.sourceType == .photoLibrary {
+				//let library = PHPhotoLibrary.shared()
+				//let URL = info["UIImagePickerControllerReferenceURL"] as! NSURL
 			}
-		}else if picker.sourceType == .photoLibrary {
-			//let library = PHPhotoLibrary.shared()
-			//let URL = info["UIImagePickerControllerReferenceURL"] as! NSURL
+		
+			// Destructor
+			dismiss(animated: true, completion: nil)
 		}
-	
-		// Destructor
-		dismiss(animated: true, completion: nil)
 	}
 
 	@IBAction func AddingRestorant(_ sender: AnyObject) {
@@ -150,9 +153,10 @@ class AlexAddRestViewController: UITableViewController, UIImagePickerControllerD
 		let location = eLocation.text
 		
 		if let restaurantImage = AddingImage.image {
-			if let addRest = Restaurant.AddNewRestaurant(name: name!, type: type!, location: location!, phoneNumber: "", imageName: nil, imageData: UIImagePNGRepresentation(restaurantImage), isVisited: iBeenHere.isOn) {
+			if let addRest = Restaurant.AddNewRestaurant(name: name!, type: type!, location: location!, phoneNumber: "", isVisited: iBeenHere.isOn) {
 				addRestorant = addRest
 				addRestorant.FillRestaurant()
+				addRestorant.AddRestaurantImage(image: restaurantImage)
 				RestoratAdded = true
 				performSegue(withIdentifier: "UnwingeToRoot", sender: sender)
 			}else{

@@ -23,7 +23,7 @@ class AlexDetailViewController: UIViewController, UITableViewDataSource, UITable
 
         // Do any additional setup after loading the view.
 		
-		if let restaurantImage = restaurant.image{
+		if let restaurantImage = restaurant.mainToPhoto?.photo{
 			detailImage.image = UIImage.init(data: restaurantImage)
 		}
 		title = restaurant.name
@@ -100,7 +100,11 @@ class AlexDetailViewController: UIViewController, UITableViewDataSource, UITable
         // Pass the selected object to the new view controller.
 		if segue.identifier! == "RateLink" {
 			let detViewController = segue.destination as! AlexRateController
-			detViewController.ImageData = restaurant.image
+			if let restaurantImage = restaurant.mainToPhoto?.photo{
+				detViewController.ImageData = restaurantImage
+			}else{
+				detViewController.ImageData = restaurant.image
+			}
 			detViewController.RestoranName = restaurant.name
 		}else if segue.identifier! == "MapLink"{
 			let detViewController = segue.destination as! AlexMapViewController
