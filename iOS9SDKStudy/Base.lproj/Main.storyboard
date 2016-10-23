@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="JjJ-ze-j0n">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Dgh-Wc-duN">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="jA4-Im-GKI">
-                            <rect key="frame" x="0.0" y="173" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="173" width="375" height="7"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
@@ -108,12 +108,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6T7-rP-cMg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="366" y="630"/>
+            <point key="canvasLocation" x="1304.8" y="629.2353823088456"/>
         </scene>
         <!--Alex Detail View Controller-->
         <scene sceneID="NMQ-l6-eHv">
             <objects>
-                <viewController id="X7l-ZL-Rqj" customClass="AlexDetailViewController" customModule="iOS9SDKStudy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="X7l-ZL-Rqj" customClass="AlexDetailViewController" customModule="iOS9SDKStudy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xJE-vL-8R6"/>
                         <viewControllerLayoutGuide type="bottom" id="oFB-6J-wDI"/>
@@ -133,7 +133,7 @@
                                         <rect key="frame" x="0.0" y="342" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4gh-xR-zD0" id="EXD-EK-5eN">
-                                            <frame key="frameInset" width="375" height="44"/>
+                                            <frame key="frameInset" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8QL-08-URs">
@@ -215,12 +215,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h8Y-sQ-nND" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1088.8" y="626.53673163418296"/>
+            <point key="canvasLocation" x="2028" y="626.53673163418296"/>
         </scene>
         <!--Alex Map View Controller-->
         <scene sceneID="Jdn-Qh-uxv">
             <objects>
-                <viewController id="bdm-6h-MWS" customClass="AlexMapViewController" customModule="iOS9SDKStudy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="bdm-6h-MWS" customClass="AlexMapViewController" customModule="iOS9SDKStudy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pzg-al-VGX"/>
                         <viewControllerLayoutGuide type="bottom" id="qPG-Pf-8x7"/>
@@ -249,7 +249,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mtw-wh-2Ms" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1872.8" y="1022.3388305847077"/>
+            <point key="canvasLocation" x="2812" y="1022.3388305847077"/>
         </scene>
         <!--Добавление ресторана-->
         <scene sceneID="thM-qP-2Gm">
@@ -601,12 +601,30 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kPb-kl-ns6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="DHv-m0-goo" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1874" y="302"/>
+            <point key="canvasLocation" x="2812" y="301.79910044977515"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="poA-pA-aan">
+            <objects>
+                <navigationController restorationIdentifier="favorite" id="Xst-Og-TrY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="fMK-Fp-rMf"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GcE-f9-BMO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Kuk-9l-IEk" kind="relationship" relationship="rootViewController" id="3i9-zt-6uF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WWI-ft-Fmp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="545" y="-138"/>
         </scene>
         <!--Списсок ресторанов-->
         <scene sceneID="3Xf-VY-ouO">
             <objects>
-                <navigationController title="Списсок ресторанов" id="JjJ-ze-j0n" sceneMemberID="viewController">
+                <navigationController restorationIdentifier="all" title="Списсок ресторанов" id="JjJ-ze-j0n" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="BO9-mJ-m2c"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="BjY-zN-Fd0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -617,7 +635,26 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BcN-eu-izO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-394" y="630"/>
+            <point key="canvasLocation" x="544.79999999999995" y="629.2353823088456"/>
+        </scene>
+        <!--Alex Tab Bar Controller-->
+        <scene sceneID="Sad-FL-D2y">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Dgh-Wc-duN" customClass="AlexTabBarController" customModule="iOS9SDKStudy" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="VKy-7a-Z3z">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="JjJ-ze-j0n" kind="relationship" relationship="viewControllers" id="lcE-Wr-BtM"/>
+                        <segue destination="Xst-Og-TrY" kind="relationship" relationship="viewControllers" id="uvh-5U-HCx"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ucw-5Z-91h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-439" y="240"/>
         </scene>
     </scenes>
     <resources>
@@ -629,4 +666,7 @@
         <image name="photoalbum" width="64" height="64"/>
         <image name="rating" width="128" height="128"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="3i9-zt-6uF"/>
+    </inferredMetricsTieBreakers>
 </document>

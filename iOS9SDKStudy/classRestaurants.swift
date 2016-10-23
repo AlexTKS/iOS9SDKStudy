@@ -68,7 +68,7 @@ open class Restaurant: NSManagedObject {
 	}
 	
 	// Запрос всех объктов для отображения
-	open class func FetchRestaurants() -> [Restaurant] {
+	open class func FetchRestaurants(favoritesOnly: Bool) -> [Restaurant] {
 		
 		var restaurants: [Restaurant] = []
 		
@@ -78,14 +78,14 @@ open class Restaurant: NSManagedObject {
 		
 		
 		// Учим отборы
-		/*
-		let rtrt = "Cafe Lore"
-		let Predicate = NSPredicate.init(format: "name == %@", rtrt)
-		fetchRequest.predicate = Predicate
-		*/
+		if favoritesOnly {
+			let Predicate = NSPredicate.init(format: "isFavorites == YES")
+			fetchRequest.predicate = Predicate
+		}
 		
+		let appDelegate = UIApplication.shared.delegate as? AppDelegate
 		
-		if let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext {
+		if let managedObjectContext = appDelegate?.persistentContainer.viewContext {
 			let fetchResultController = NSFetchedResultsController<Restaurant>(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
 			do {
 				try fetchResultController.performFetch()

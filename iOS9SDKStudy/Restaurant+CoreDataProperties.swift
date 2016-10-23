@@ -17,6 +17,7 @@ extension Restaurant {
 
     @NSManaged public var image: Data?
     @NSManaged public var isVisited: Bool
+	@NSManaged public var isFavorites: Bool
     @NSManaged public var location: String
     @NSManaged public var name: String
     @NSManaged public var phoneNumber: String?

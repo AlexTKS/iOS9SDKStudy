@@ -24,6 +24,7 @@
 		FA73AF571DBC97FF00DE0AA6 /* RestaurantPhoto+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA73AF531DBC97FF00DE0AA6 /* RestaurantPhoto+CoreDataClass.swift */; };
 		FA73AF581DBC97FF00DE0AA6 /* RestaurantPhoto+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA73AF541DBC97FF00DE0AA6 /* RestaurantPhoto+CoreDataProperties.swift */; };
 		FA73AF5A1DBC97FF00DE0AA6 /* Restaurant+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA73AF561DBC97FF00DE0AA6 /* Restaurant+CoreDataProperties.swift */; };
+		FA73AF5C1DBCF7A600DE0AA6 /* AlexTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA73AF5B1DBCF7A600DE0AA6 /* AlexTabBarController.swift */; };
 		FAE2FA151DB7DEDE007CF47D /* iOS9SDKStudy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAE2FA131DB7DEDE007CF47D /* iOS9SDKStudy.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 		FA73AF531DBC97FF00DE0AA6 /* RestaurantPhoto+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RestaurantPhoto+CoreDataClass.swift"; sourceTree = "<group>"; };
 		FA73AF541DBC97FF00DE0AA6 /* RestaurantPhoto+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RestaurantPhoto+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FA73AF561DBC97FF00DE0AA6 /* Restaurant+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Restaurant+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		FA73AF5B1DBCF7A600DE0AA6 /* AlexTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlexTabBarController.swift; sourceTree = "<group>"; };
 		FA75B4F81D85E11A008E71C8 /* AlexUITableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlexUITableTableViewController.swift; sourceTree = "<group>"; };
 		FA75B4FA1D85E14D008E71C8 /* classRestaurants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = classRestaurants.swift; sourceTree = "<group>"; };
 		FA75B4FC1D85E3BA008E71C8 /* AlexTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlexTableViewCell.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				FA14A1B71DABE6D1008AAEDD /* ClassRestaurant */,
 				FA14A1B61DABE6A7008AAEDD /* AddRastourant */,
 				FA00A24F1D71EFCB0091014E /* AppDelegate.swift */,
+				FA73AF5B1DBCF7A600DE0AA6 /* AlexTabBarController.swift */,
 				FA00A2531D71EFCB0091014E /* Main.storyboard */,
 				FA00A2591D71EFCB0091014E /* Assets.xcassets */,
 				FA00A25B1D71EFCB0091014E /* LaunchScreen.storyboard */,
@@ -224,6 +227,7 @@
 			files = (
 				FA25E87B1DB6DBCC0077899E /* AppDelegate.swift in Sources */,
 				FA25E87A1DB6DBCA0077899E /* AlexDefaultFillTableViewController.swift in Sources */,
+				FA73AF5C1DBCF7A600DE0AA6 /* AlexTabBarController.swift in Sources */,
 				FA25E8791DB6DBC70077899E /* AlexAddRestViewController.swift in Sources */,
 				FA25E8771DB6DBB30077899E /* classRestaurants.swift in Sources */,
 				FA25E8761DB6DBB00077899E /* AlexRateController.swift in Sources */,

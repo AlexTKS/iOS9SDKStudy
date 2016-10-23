@@ -13,6 +13,7 @@ class AlexUITableTableViewController: UITableViewController, UISearchResultsUpda
 	var restaurants: [Restaurant] = []			// Массив всех ресторанов бызы
 	var searchRestaurants: [Restaurant] = []	// Массив ресторанов по результатам поиска
 	var searchController: UISearchController!
+	public var favoriteController = false		// Флаг отображения избранного
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,12 +22,12 @@ class AlexUITableTableViewController: UITableViewController, UISearchResultsUpda
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        // self.navigationItem.rightBarButtonItem = seılf.editButtonItem
 		
 		navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 		navigationController?.hidesBarsOnSwipe = true
 		
-		restaurants = Restaurant.FetchRestaurants()
+		updateSourceData(initial: true)
 		
 		// Настройка контроллера поиска
 		searchController = UISearchController.init(searchResultsController: nil)
@@ -35,7 +36,19 @@ class AlexUITableTableViewController: UITableViewController, UISearchResultsUpda
 		searchController.searchBar.placeholder = "Search restaurant..."
 		tableView.tableHeaderView = searchController.searchBar
 		
+		if favoriteController {
+			navigationItem.title = "Favorite"
+			navigationItem.leftBarButtonItems = nil
+			navigationItem.rightBarButtonItem = nil
+		}
     }
+	
+	public func updateSourceData(initial: Bool) {
+		restaurants = Restaurant.FetchRestaurants(favoritesOnly: favoriteController)
+		if !initial {
+			tableView.reloadData()
+		}
+	}
 	
 	// Фильтрация результатов поиска
 	func updateSearchResults(for searchController: UISearchController) {

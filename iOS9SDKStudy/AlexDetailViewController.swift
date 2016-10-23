@@ -14,8 +14,9 @@ class AlexDetailViewController: UIViewController, UITableViewDataSource, UITable
 	@IBOutlet weak var detailImage: UIImageView!
 	@IBOutlet weak var RateButton: UIButton!
 	
-	var restaurant:Restaurant!//.init(name: "", type: "", location: "", phoneNumber: "", image: "", isVisited: false)
+	var restaurant:Restaurant!
 	private let iBeenHere = "Я был здесь"
+	private let favorite = "Любимый"
 	private let tel = "Телефон"
 	
 	override func viewDidLoad() {
@@ -52,7 +53,7 @@ class AlexDetailViewController: UIViewController, UITableViewDataSource, UITable
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		// #warning Incomplete implementation, return the number of rows
-		return 5
+		return 6
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -73,6 +74,8 @@ class AlexDetailViewController: UIViewController, UITableViewDataSource, UITable
 			}
 		case 4:
 			cell.SetCell(pNameL: iBeenHere, pValueL: (restaurant.isVisited) ? "Да": "Нет")
+		case 5:
+			cell.SetCell(pNameL: favorite, pValueL: (restaurant.isFavorites) ? "Да": "Нет")
 		default:
 			cell.SetCell(pNameL: "", pValueL: "")
 		}
@@ -84,11 +87,21 @@ class AlexDetailViewController: UIViewController, UITableViewDataSource, UITable
 		let cell = tableView.cellForRow(at: indexPath) as! AlexDetailCell
 		if cell.pName.text == iBeenHere
 		{
-			let listController = navigationController!.viewControllers[0] as! AlexUITableTableViewController
 			restaurant.isVisited = !restaurant.isVisited
 			cell.SetCell(pNameL: iBeenHere, pValueL: (restaurant.isVisited) ? "Да": "Нет")
-			listController.renewSelectedCell(nil, row: nil)
+			updateRootController()
+		}else if cell.pName.text == favorite {
+			restaurant.isFavorites = !restaurant.isFavorites
+			cell.SetCell(pNameL: favorite, pValueL: (restaurant.isFavorites) ? "Да": "Нет")
+			updateRootController()
 		}
+		
+	}
+	
+	func updateRootController() {
+		let listController = navigationController!.viewControllers[0] as! AlexUITableTableViewController
+		listController.renewSelectedCell(nil, row: nil)
+		listController.updateSourceData(initial: false)
 	}
 
 
