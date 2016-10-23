@@ -8,9 +8,11 @@
 
 import UIKit
 
-class AlexUITableTableViewController: UITableViewController {
+class AlexUITableTableViewController: UITableViewController, UISearchResultsUpdating {
 
-	var restaurants: [Restaurant] = []
+	var restaurants: [Restaurant] = []			// Массив всех ресторанов бызы
+	var searchRestaurants: [Restaurant] = []	// Массив ресторанов по результатам поиска
+	var searchController: UISearchController!
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +28,26 @@ class AlexUITableTableViewController: UITableViewController {
 		
 		restaurants = Restaurant.FetchRestaurants()
 		
+		// Настройка контроллера поиска
+		searchController = UISearchController.init(searchResultsController: nil)
+		searchController.dimsBackgroundDuringPresentation = false
+		searchController.searchResultsUpdater  = self
+		searchController.searchBar.placeholder = "Search restaurant..."
+		tableView.tableHeaderView = searchController.searchBar
+		
     }
+	
+	// Фильтрация результатов поиска
+	func updateSearchResults(for searchController: UISearchController) {
+		if let searchText = searchController.searchBar.text {
+			searchRestaurants = restaurants.filter({ (Restaurant) -> Bool in
+				let nameMach = Restaurant.name.range(of: searchText, options: String.CompareOptions.caseInsensitive, range: nil, locale: nil)
+				let locMach  = Restaurant.location.range(of: searchText, options: String.CompareOptions.caseInsensitive, range: nil, locale: nil)
+				return nameMach != nil || locMach != nil
+			})
+		}
+		tableView.reloadData()
+	}
 	
 	@IBAction func EditTV(_ sender: AnyObject) {
 		if tableView.isEditing{
@@ -59,13 +80,13 @@ class AlexUITableTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return restaurants.count
+		return searchController.isActive ? searchRestaurants.count : restaurants.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RootTableCell", for: indexPath) as! AlexTableViewCell
 
-		cell.restaurant = restaurants[(indexPath as NSIndexPath).row]
+		cell.restaurant = searchController.isActive ? searchRestaurants[indexPath.row] : restaurants[indexPath.row]
 		cell.FillCell()
 		
 		renewSelectedCell(cell, row: (indexPath as NSIndexPath).row)
@@ -103,7 +124,7 @@ class AlexUITableTableViewController: UITableViewController {
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-        return true
+        return !searchController.isActive
     }
 
 	/*
@@ -175,7 +196,7 @@ class AlexUITableTableViewController: UITableViewController {
 		{
 			let id = tableView.indexPath(for: sender! as! AlexTableViewCell)
 			let detViewController = segue.destination as! AlexDetailViewController
-			detViewController.restaurant = restaurants[id!.row]
+			detViewController.restaurant = searchController.isActive ? searchRestaurants[id!.row] : restaurants[id!.row]
 		}
 	}
 	
