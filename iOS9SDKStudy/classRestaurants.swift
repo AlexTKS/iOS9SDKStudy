@@ -146,7 +146,7 @@ open class Restaurant: NSManagedObject {
 		}
 		
 		if let thumbnailImage = thumbnail {
-			self.image = UIImageJPEGRepresentation(thumbnailImage, 80)
+			self.image = UIImageJPEGRepresentation(thumbnailImage, 0.8)
 			if let addRestaurantPhoto = RestaurantPhoto.AddNewRestaurantPhoto() {
 				addRestaurantPhoto.photo = UIImagePNGRepresentation(image!)
 				self.mainToPhoto = addRestaurantPhoto
