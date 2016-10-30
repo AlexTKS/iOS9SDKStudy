@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class AlexMapViewController: UIViewController {
+class AlexMapViewController: UIViewController, MKMapViewDelegate {
 
 	@IBOutlet weak var mapView: MKMapView!
 	
@@ -49,6 +49,27 @@ class AlexMapViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+	
+	func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+		let identifier = "MyPin"
+		
+		if annotation.isKind(of: MKUserLocation.self) {
+			return nil
+		}
+		
+		var annotationView: MKPinAnnotationView? = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
+		
+		if annotationView == nil {
+			annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+			annotationView?.canShowCallout = true
+		}
+		
+		let lefIconView = UIImageView(frame: CGRect(x: 0, y: 0, width: 53, height: 53))
+		lefIconView.image = UIImage(data: restaurant.image!)
+		annotationView?.leftCalloutAccessoryView = lefIconView
+		
+		return annotationView
+	}
 	
     /*
     // MARK: - Navigation
