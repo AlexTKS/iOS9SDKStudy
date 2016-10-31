@@ -16,6 +16,6 @@ extension RestaurantPhoto {
     }
 
     @NSManaged public var photo: Data?
-    @NSManaged public var photoToMain: Restaurant?
+    @NSManaged public var photoToMain: Restaurant
 
 }
