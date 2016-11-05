@@ -21,6 +21,8 @@
 		FA25E87A1DB6DBCA0077899E /* AlexDefaultFillTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA14A1BB1DABE80A008AAEDD /* AlexDefaultFillTableViewController.swift */; };
 		FA25E87B1DB6DBCC0077899E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA00A24F1D71EFCB0091014E /* AppDelegate.swift */; };
 		FA7056791D9C74B700A2503C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA7056781D9C74B700A2503C /* MapKit.framework */; };
+		FA71D8271DCE54850029C222 /* AlexAboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71D8261DCE54850029C222 /* AlexAboutTableViewController.swift */; };
+		FA71D8291DCE620D0029C222 /* AlexAboutWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71D8281DCE620D0029C222 /* AlexAboutWebViewController.swift */; };
 		FA73AF571DBC97FF00DE0AA6 /* RestaurantPhoto+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA73AF531DBC97FF00DE0AA6 /* RestaurantPhoto+CoreDataClass.swift */; };
 		FA73AF581DBC97FF00DE0AA6 /* RestaurantPhoto+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA73AF541DBC97FF00DE0AA6 /* RestaurantPhoto+CoreDataProperties.swift */; };
 		FA73AF5A1DBC97FF00DE0AA6 /* Restaurant+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA73AF561DBC97FF00DE0AA6 /* Restaurant+CoreDataProperties.swift */; };
@@ -40,6 +42,8 @@
 		FA2418BE1D8B1D8100202856 /* AlexDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlexDetailViewController.swift; sourceTree = "<group>"; };
 		FA4AB8BC1D8B30B10022D3FC /* AlexRateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlexRateController.swift; sourceTree = "<group>"; };
 		FA7056781D9C74B700A2503C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		FA71D8261DCE54850029C222 /* AlexAboutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlexAboutTableViewController.swift; sourceTree = "<group>"; };
+		FA71D8281DCE620D0029C222 /* AlexAboutWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlexAboutWebViewController.swift; sourceTree = "<group>"; };
 		FA73AF531DBC97FF00DE0AA6 /* RestaurantPhoto+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RestaurantPhoto+CoreDataClass.swift"; sourceTree = "<group>"; };
 		FA73AF541DBC97FF00DE0AA6 /* RestaurantPhoto+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RestaurantPhoto+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FA73AF561DBC97FF00DE0AA6 /* Restaurant+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Restaurant+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -91,6 +95,8 @@
 				FA00A24F1D71EFCB0091014E /* AppDelegate.swift */,
 				FA73AF5B1DBCF7A600DE0AA6 /* AlexTabBarController.swift */,
 				FA00A2531D71EFCB0091014E /* Main.storyboard */,
+				FA71D8281DCE620D0029C222 /* AlexAboutWebViewController.swift */,
+				FA71D8261DCE54850029C222 /* AlexAboutTableViewController.swift */,
 				FA00A2591D71EFCB0091014E /* Assets.xcassets */,
 				FA00A25B1D71EFCB0091014E /* LaunchScreen.storyboard */,
 				FA00A25E1D71EFCB0091014E /* Info.plist */,
@@ -238,7 +244,9 @@
 				FA73AF581DBC97FF00DE0AA6 /* RestaurantPhoto+CoreDataProperties.swift in Sources */,
 				FA25E8721DB6DBA40077899E /* AlexUITableTableViewController.swift in Sources */,
 				FA73AF571DBC97FF00DE0AA6 /* RestaurantPhoto+CoreDataClass.swift in Sources */,
+				FA71D8271DCE54850029C222 /* AlexAboutTableViewController.swift in Sources */,
 				FAE2FA151DB7DEDE007CF47D /* iOS9SDKStudy.xcdatamodeld in Sources */,
+				FA71D8291DCE620D0029C222 /* AlexAboutWebViewController.swift in Sources */,
 				FA25E8711DB6DB9D0077899E /* AlexTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
