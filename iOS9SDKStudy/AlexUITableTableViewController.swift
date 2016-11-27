@@ -119,9 +119,12 @@ class AlexUITableTableViewController: UITableViewController, UISearchResultsUpda
 		}
 		else
 		{
-			let currentIndexPath = tableView.indexPathForSelectedRow!
-			cell = tableView.cellForRow(at: currentIndexPath) as! AlexTableViewCell
-			index = (currentIndexPath as NSIndexPath).row
+			if let currentIndexPath = tableView.indexPathForSelectedRow {
+				cell = tableView.cellForRow(at: currentIndexPath) as! AlexTableViewCell
+				index = (currentIndexPath as NSIndexPath).row
+			} else {
+				return
+			}
 		}
 		
 		if restaurants[index].isVisited
