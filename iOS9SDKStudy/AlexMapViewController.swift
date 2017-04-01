@@ -22,8 +22,8 @@ class AlexMapViewController: UIViewController, MKMapViewDelegate {
 		
 		let GeoCoder = CLGeocoder()
 		GeoCoder.geocodeAddressString(restaurant.location) { (Placemarks, Error) in
-			if Error != nil{
-				let Alert = UIAlertController.init(title: "Произошла ошибка получения адреса", message: Error as? String, preferredStyle: .alert)
+			if let error = Error{
+				let Alert = UIAlertController.init(title: "Произошла ошибка получения адреса", message: error as? String, preferredStyle: .alert)
 				let AlertAction = UIAlertAction.init(title: "OK", style: .cancel, handler: nil)
 				Alert.addAction(AlertAction)
 				self.present(Alert, animated: true, completion: nil)

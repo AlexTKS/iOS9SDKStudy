@@ -89,7 +89,7 @@ class AlexAddRestViewController: UITableViewController, UIImagePickerControllerD
 		GeoCoder.reverseGeocodeLocation(location, completionHandler: { (stuff, Error) in
 			
 			if (Error != nil) {
-				print("reverse geodcode fail: \(Error?.localizedDescription)")
+				print("reverse geodcode fail: \(String(describing: Error?.localizedDescription))")
 				return
 			}
 			

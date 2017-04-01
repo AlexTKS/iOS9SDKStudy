@@ -228,7 +228,7 @@ class AlexUITableTableViewController: UITableViewController, UISearchResultsUpda
 		if segue.source is AlexAddRestViewController{
 			let addVC = segue.source as! AlexAddRestViewController
 			if addVC.RestoratAdded {
-				addVC.addRestorant.sortCriteria = SortCriteria + 1
+				addVC.addRestorant.sortCriteria = Int16(SortCriteria + 1)
 				restaurants.append(addVC.addRestorant)
 				tableView.reloadData()
 			}
