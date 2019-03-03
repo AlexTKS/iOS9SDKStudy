@@ -22,7 +22,6 @@
 		FA25E87B1DB6DBCC0077899E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA00A24F1D71EFCB0091014E /* AppDelegate.swift */; };
 		FA7056791D9C74B700A2503C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA7056781D9C74B700A2503C /* MapKit.framework */; };
 		FA71D8271DCE54850029C222 /* AlexAboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71D8261DCE54850029C222 /* AlexAboutTableViewController.swift */; };
-		FA71D8291DCE620D0029C222 /* AlexAboutWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71D8281DCE620D0029C222 /* AlexAboutWebViewController.swift */; };
 		FA73AF571DBC97FF00DE0AA6 /* RestaurantPhoto+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA73AF531DBC97FF00DE0AA6 /* RestaurantPhoto+CoreDataClass.swift */; };
 		FA73AF581DBC97FF00DE0AA6 /* RestaurantPhoto+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA73AF541DBC97FF00DE0AA6 /* RestaurantPhoto+CoreDataProperties.swift */; };
 		FA73AF5A1DBC97FF00DE0AA6 /* Restaurant+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA73AF561DBC97FF00DE0AA6 /* Restaurant+CoreDataProperties.swift */; };
@@ -43,7 +42,6 @@
 		FA4AB8BC1D8B30B10022D3FC /* AlexRateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlexRateController.swift; sourceTree = "<group>"; };
 		FA7056781D9C74B700A2503C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		FA71D8261DCE54850029C222 /* AlexAboutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlexAboutTableViewController.swift; sourceTree = "<group>"; };
-		FA71D8281DCE620D0029C222 /* AlexAboutWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlexAboutWebViewController.swift; sourceTree = "<group>"; };
 		FA73AF531DBC97FF00DE0AA6 /* RestaurantPhoto+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RestaurantPhoto+CoreDataClass.swift"; sourceTree = "<group>"; };
 		FA73AF541DBC97FF00DE0AA6 /* RestaurantPhoto+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RestaurantPhoto+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FA73AF561DBC97FF00DE0AA6 /* Restaurant+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Restaurant+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -95,7 +93,6 @@
 				FA00A24F1D71EFCB0091014E /* AppDelegate.swift */,
 				FA73AF5B1DBCF7A600DE0AA6 /* AlexTabBarController.swift */,
 				FA00A2531D71EFCB0091014E /* Main.storyboard */,
-				FA71D8281DCE620D0029C222 /* AlexAboutWebViewController.swift */,
 				FA71D8261DCE54850029C222 /* AlexAboutTableViewController.swift */,
 				FA00A2591D71EFCB0091014E /* Assets.xcassets */,
 				FA00A25B1D71EFCB0091014E /* LaunchScreen.storyboard */,
@@ -180,7 +177,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Александр";
 				TargetAttributes = {
 					FA00A24B1D71EFCB0091014E = {
@@ -246,7 +243,6 @@
 				FA73AF571DBC97FF00DE0AA6 /* RestaurantPhoto+CoreDataClass.swift in Sources */,
 				FA71D8271DCE54850029C222 /* AlexAboutTableViewController.swift in Sources */,
 				FAE2FA151DB7DEDE007CF47D /* iOS9SDKStudy.xcdatamodeld in Sources */,
-				FA71D8291DCE620D0029C222 /* AlexAboutWebViewController.swift in Sources */,
 				FA25E8711DB6DB9D0077899E /* AlexTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,12 +282,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -318,7 +316,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -339,12 +337,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -365,7 +365,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

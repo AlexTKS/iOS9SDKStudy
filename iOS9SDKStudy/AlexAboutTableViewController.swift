@@ -71,7 +71,7 @@ class AlexAboutTableViewController: UITableViewController {
 			}
 		case 1:
 			if let url = URL(string: links[indexPath.row]) {
-				let safariView = SFSafariViewController(url: url, entersReaderIfAvailable: true)
+				let safariView = SFSafariViewController(url: url)
 				present(safariView, animated: true, completion: nil)
 			}
 		default:

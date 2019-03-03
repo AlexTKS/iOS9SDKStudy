@@ -8,11 +8,9 @@
 
 import UIKit
 
-class AlexAboutWebViewController: UIViewController {
+class AlexWKWebView: WKWebViev {
 
-	@IBOutlet weak var webView: UIWebView!
-	
-    override func viewDidLoad() {
+   override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
